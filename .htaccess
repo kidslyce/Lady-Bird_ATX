@@ -1,0 +1,15 @@
+RewriteEngine On
+
+
+
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteRule ^lbatx$ controllers/lbatx.php?action=index
+
+RewriteCond %{REQUEST_METHOD} ^POST$
+RewriteRule ^lbatx$ controllers/lbatx.php?action=create
+
+RewriteCond %{REQUEST_METHOD} ^PUT$
+RewriteRule ^lbatx/([0-9]+)$ controllers/lbatx.php?action=update&id=$1
+
+RewriteCond %{REQUEST_METHOD} ^DELETE$
+RewriteRule ^lbatx/([0-9]+)$ controllers/lbatx.php?action=delete&id=$1
