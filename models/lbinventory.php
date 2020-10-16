@@ -57,7 +57,6 @@ static function createInv($new_item){
     $items = array();
     $results = pg_query("select * from inventory");
     $row_object = pg_fetch_object($results);
-    echo 'results from the first fetch $row_object' ;
    while($row_object !== false){
       $new_item = new Item(
         intval($row_object->id),

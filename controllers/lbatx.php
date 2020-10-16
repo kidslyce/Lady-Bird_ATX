@@ -3,7 +3,6 @@ header('Content-Type: application/json');
 include_once __DIR__ . '/../models/lbinventory.php';
 
 if($_REQUEST['action'] === 'index'){
-  echo 'here mf';
   echo  json_encode( Inventory::getInv() );
 }else if ($_REQUEST['action'] === 'create'){
       $request_body = file_get_contents('php://input');
