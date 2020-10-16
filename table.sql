@@ -8,6 +8,17 @@ create table inventory (id SERIAL,
   qty int,
   reord_qty int);
 
+  create table vendors (id SERIAL,
+    vendor_id VARCHAR(255),
+    vendor_name varchar(255),
+    vendor_add1 varchar(255),
+    vendor_add2 varchar(255),
+    vendor_city varchar(255),
+    vendor_state varchar(255),
+    vendor_zip varchar(10),
+    vendor_rating int);
+
+
 INSERT INTO inventory (item, name,description,price,cat,img,qty,reord_qty) VALUES
 ('jantxv1577','redkin shampoo','shampoo 32oz', 9.93,'cleanser','xyzzy',38,20);
 
@@ -21,6 +32,20 @@ INSERT INTO inventory (item, name,description,price,cat,img,qty,reord_qty) VALUE
 ('jant-3320','styling paste','shampoo 32oz', 9.93,'cleanser','xyzzy',38,20);
 
 
-$new_item = new Item(null,$body_object->item, $body_object->desc,
-  $body_object->price,$body_object->img,$body_object->cat,$body_object->qty,
-  $body_object->reordqty);
+create table vendors (id SERIAL,
+  vendor_id VARCHAR(255),
+  vendor_name varchar(255),
+  vendor_add1 varchar(255),
+  vendor_add2 varchar(255),
+  vendor_city varchar(255),
+  vendor_state varchar(255),
+  vendor_zip varchar(10),
+  vendor_rating int);
+
+  INSERT INTO vendors (vendor_id, vendor_name, vendor_add1, vendor_add2, vendor_city,
+    vendor_state, vendor_zip, vendor_rating) VALUES
+  ('2543', 'Bumble & Bumble','232 W. Salic Way','','New York','NY','02332-0114',8);
+
+  INSERT INTO vendors (vendor_id, vendor_name, vendor_add1, vendor_add2, vendor_city,
+    vendor_state, vendor_zip, vendor_rating) VALUES
+  ('2577', 'Sally Beauty Supply','11735 N. 7th St.','','Chicago','IIL','33638',9);
