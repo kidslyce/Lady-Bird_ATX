@@ -13,3 +13,15 @@ RewriteRule ^lbatx/([0-9]+)$ controllers/lbatx.php?action=update&id=$1
 
 RewriteCond %{REQUEST_METHOD} ^DELETE$
 RewriteRule ^lbatx/([0-9]+)$ controllers/lbatx.php?action=delete&id=$1
+
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteRule ^lbatxv$ controllers/vendor.php?action=index
+
+RewriteCond %{REQUEST_METHOD} ^POST$
+RewriteRule ^lbatxv$ controllers/vendor.php?action=create
+
+RewriteCond %{REQUEST_METHOD} ^PUT$
+RewriteRule ^lbatxv/([0-9]+)$ controllers/vendor.php?action=update&id=$1
+
+RewriteCond %{REQUEST_METHOD} ^DELETE$
+RewriteRule ^lbatxv/([0-9]+)$ controllers/vendor.php?action=delete&id=$1
