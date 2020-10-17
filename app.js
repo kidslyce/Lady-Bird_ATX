@@ -5,6 +5,11 @@ class App extends React.Component {
 }
 
 componentDidMount = () => {
+    this.getdata();
+}
+
+
+getdata = () => {
     axios.get('/lbatx').then(
         (response) => {
             this.setState({
@@ -13,56 +18,6 @@ componentDidMount = () => {
         )
     })
 }
-///////////////  NEW ITEM   /////////////
-  changeNewItemItem = (event) => {
-      this.setState({
-          newItemItem:event.target.value
-      })
-  }
-
-///////////////  NEW NAME   /////////////
-  changeNewItemName = (event) => {
-      this.setState({
-          newItemName:event.target.value
-      })
-  }
-///////////////  NEW DESCRIPTION   /////////////
-  changeNewItemDescription= (event) => {
-      this.setState({
-          newItemDescription:event.target.value
-      })
-  }
-///////////////  NEW PRICE   /////////////
-  changeNewItemPrice = (event) => {
-      this.setState({
-          newItemPrice:event.target.value
-      })
-  }
-    ///////////////  NEW IMG   /////////////
-  changeNewItemImg = (event) => {
-      this.setState({
-          newItemImg:event.target.value
-      })
-  }
-///////////////  NEW CAT   /////////////
-  changeNewItemCat = (event) => {
-      this.setState({
-          newItemCat:event.target.value
-      })
-  }
-///////////////  NEW QTY   /////////////
-  changeNewItemQty = (event) => {
-      this.setState({
-          newItemQty:event.target.value
-      })
-  }
-///////////////  NEW REORDER QTY   /////////////
-  changeNewItemReord_Qty = (event) => {
-      this.setState({
-          newItemReord_Qty:event.target.value
-      })
-  }
-
 ///////////////  UPDATE ITEM   /////////////
   changeUpdateItemItem = (event) => {
       this.setState({
@@ -177,7 +132,10 @@ componentDidMount = () => {
         return <div>
 
          
-            <CreateItem createdItem={this.updateItem}/>
+            <CreateItem createdItem={this.updateItem}
+                getdata={this.getdata.bind(this)}
+            />
+
 
             <h2>Inventory Detail</h2>
             <ul>
