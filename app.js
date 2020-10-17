@@ -1,3 +1,4 @@
+
 class App extends React.Component {
   state = {
     items: []
@@ -174,18 +175,10 @@ componentDidMount = () => {
 
     render = () => {
         return <div>
-            <h2>Create Item</h2>
-            <form onSubmit={this.createItem}>
-              <input onKeyUp={this.changeNewItemItem} type="text" placeholder="item"/><br/>
-              <input onKeyUp={this.changeNewItemName} type="text" placeholder="name"/><br/>
-              <input onKeyUp={this.changeNewItemDescription} type="text" placeholder="description"/><br/>
-              <input onKeyUp={this.changeNewItemPrice} type="number" placeholder="price"/><br/>
-              <input onKeyUp={this.changeNewItemImg} type="text" placeholder="img"/><br/>
-              <input onKeyUp={this.changeNewItemCat} type="text" placeholder="cat"/><br/>
-              <input onKeyUp={this.changeNewItemQty} type="number" placeholder="qty"/><br/>
-              <input onKeyUp={this.changeNewItemReord_Qty} type="number" placeholder="reord_qty"/><br/>
-              <input type="submit" value="Create Item"/>
-            </form>
+
+         
+            <CreateItem createdItem={this.updateItem}/>
+
             <h2>Inventory Detail</h2>
             <ul>
                 {
