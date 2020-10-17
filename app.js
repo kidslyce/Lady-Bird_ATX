@@ -1,5 +1,5 @@
 // class CreateItem extends React.Component {
-  
+
 //   createItem = (event) => {
 //     event.preventDefault();
 //     axios.post(
@@ -22,9 +22,9 @@
 //   }
 // )
 // }
-  
-  
-  
+
+
+
 //   ///////////////  NEW ITEM   /////////////
 //   changeNewItemItem = (event) => {
 //     this.setState({
@@ -74,8 +74,8 @@
 //         newItemReord_Qty:event.target.value
 //     })
 // }
-  
-  
+
+
 //   render = () => {
 //     return <div>
 //     <h2>Create Item</h2>
@@ -92,7 +92,7 @@
 //             </form>
 //             </div>
 //   }
-  
+
 // }
 
 
@@ -102,6 +102,11 @@ class App extends React.Component {
 }
 
 componentDidMount = () => {
+  this.getsomefingdata()
+
+}
+
+getsomefingdata = () => {
     axios.get('/lbatx').then(
         (response) => {
             this.setState({
@@ -198,39 +203,21 @@ componentDidMount = () => {
       )
   }
 
-  
-
 
     render = () => {
         return <div>
-            <CreateItem createdItem={this.updateItem}/>
+            <CreateItem
+             getdata={this.getsomefingdata.bind(this)}/>
             <h2>Inventory Detail</h2>
             <ul>
                 {
                     this.state.items.map(
                         (items) => {
                             return <li>
-                                {items.img}:
-                                {items.item}: {items.name} :{items.description}
-                                {items.price} : {items.cat}
-                                {items.qty} : {items.reord_qty}
-                                <button value={items.id} onClick={this.deleteItem}>
-                                    DELETE
-                                </button>
-                                <details>
-                                <summary>Click to Update</summary>
-                                  <form id={items.id} onSubmit={this.updateItem}>
-                                    <input onKeyUp={this.changeUpdateItemItem} type="text" placeholder="item"/><br/>
-                                    <input onKeyUp={this.changeUpdateItemName} type="text" placeholder="name"/><br/>
-                                    <input onKeyUp={this.changeUpdateItemDescription} type="text" placeholder="description"/><br/>
-                                    <input onKeyUp={this.changeUpdateItemPrice} type="number" placeholder="price"/><br/>
-                                    <input onKeyUp={this.changeUpdateItemImg} type="text" placeholder="img"/><br/>
-                                    <input onKeyUp={this.changeUpdateItemCat} type="text" placeholder="cat"/><br/>
-                                    <input onKeyUp={this.changeUpdateItemQty} type="number" placeholder="qty"/><br/>
-                                    <input onKeyUp={this.changeUpdateItemReord_Qty} type="number" placeholder="reord_qty"/><br/>
-                                    <input type="submit" value="Update Item"/>
-                                </form>
-                                </details>
+                                <div><a href='#'>{items.img}:
+                                {items.item}  {items.name}  {items.description}  {items.price} {items.cat}   {items.qty}  {items.reord_qty}
+                                </a></div>
+
                             </li>
                         }
                     )

@@ -1,37 +1,38 @@
 class CreateItem extends React.Component {
-  
-    createItem = (event) => {
-      event.preventDefault();
-      axios.post(
-        '/lbatx',
-        {
-          item:this.state.newItemItem,
-          name:this.state.newItemName,
-          description:this.state.newItemDescription,
-          price: this.state.newItemPrice,
-          img:this.state.newItemImg,
-          cat: this.state.newItemCat,
-          qty:this.state.newItemQty,
-          reord_qty: this.state.newItemReord_Qty,
-        }
+
+  createItem = (event) => {
+    event.preventDefault();
+    axios.post(
+      '/lbatx',
+      {
+        item:this.state.newItemItem,
+        name:this.state.newItemName,
+        description:this.state.newItemDescription,
+        price: this.state.newItemPrice,
+        img:this.state.newItemImg,
+        cat: this.state.newItemCat,
+        qty:this.state.newItemQty,
+        reord_qty: this.state.newItemReord_Qty,
+      }
   ).then(
     (response) => {
         this.setState({
             items: response.data
         })
+        this.props.getdata();
     }
   )
   }
-    
-    
-    
+
+
+
     ///////////////  NEW ITEM   /////////////
     changeNewItemItem = (event) => {
       this.setState({
           newItemItem:event.target.value
       })
   }
-  
+
   ///////////////  NEW NAME   /////////////
   changeNewItemName = (event) => {
       this.setState({
@@ -74,8 +75,8 @@ class CreateItem extends React.Component {
           newItemReord_Qty:event.target.value
       })
   }
-    
-    
+
+
     render = () => {
       return <div>
       <h2>Create Item</h2>
@@ -92,6 +93,5 @@ class CreateItem extends React.Component {
               </form>
               </div>
     }
-    
+
   }
-  
