@@ -110,6 +110,27 @@ static function createInv($new_item){
 				$items[] = $new_item;
 		return $items;
 	}
+	static function getreo() {
+    $items = array();
+    $results = pg_query("select * from inventory where reord_qty > qty");
+    $row_object = pg_fetch_object($results);
+   while($row_object !== false){
+      $new_item = new Item(
+        intval($row_object->id),
+        $row_object->item,
+        $row_object->name,
+        $row_object->description,
+        $row_object->price,
+        $row_object->cat,
+        $row_object->img,
+        $row_object->qty,
+        $row_object->reord_qty
+      );
+        $items[] = $new_item;
+        $row_object = pg_fetch_object($results);
+    }
+    return $items;
+  }
 }
 
 ?>

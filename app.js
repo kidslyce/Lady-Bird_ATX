@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 class App extends React.Component {
   state = {
 
@@ -17,17 +9,20 @@ class App extends React.Component {
     Cat: '',
     Qty: '',
     Reord_Qty: '',
-    items: []
+    items: [],
+    screenToShow: ''
 }
 
-// componentDidMount = () => {
-
-//     this.getdata();
-// }
-
-// componentWillMount = (prevState) => {
-//     this.getdata();
-// }
+inventoryClick = () => {
+    this.setState({
+        screenToShow: 'Inventory'
+    })
+}
+createClick = () => {
+    this.setState({
+        screenToShow: 'Create'
+    })
+}
 
 getdata = () => {
     axios.get('/lbatx').then(
@@ -112,43 +107,59 @@ createItem = (event) => {
 onClickHandler = () => {
     this.getdata();
 }
-
-
-
     render = () => {
+      let screenSwitch = (this.state.screenToShow === 'Create')
+        ?(<CreateItem
+          createItem={this.createItem}
+          onInputChange={this.onInputChange}
+          Item={this.state.Item}
+          Name={this.state.Name}
+          Description={this.state.Description}
+          Price={this.state.Price}
+          Img={this.state.Img}
+          Cat={this.state.Cat}
+          Qty={this.state.Qty}
+          Reord_Qty={this.state.Reord_Qty}
+        />)
+        : null;
+
+        let screenSwitch1 = (this.state.screenToShow === 'Inventory')
+        ?(<InventoryDetail
+          updateItem={this.updateItem}
+          onInputChange={this.onInputChange}
+          Item={this.state.Item}
+          Name={this.state.Name}
+          Description={this.state.Description}
+          Price={this.state.Price}
+          Img={this.state.Img}
+          Cat={this.state.Cat}
+          Qty={this.state.Qty}
+          Reord_Qty={this.state.Reord_Qty}
+          items={this.state.items}
+          deleteItem={this.deleteItem}
+          />)
+          : null;
+
+
+
         return <div className="Inventory-container">
 
-            <Nav
-            onClickHandler={this.onClickHandler}
-            />
+        <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+          <div className="navbar-nav">
+            <a className="nav-item nav-link active" href="#">Lady Bird Atx </a>
+            <a className="nav-item nav-link active" href="#"
+            onClick={()=>{this.getdata() ; this.inventoryClick();}}>Inventory</a>
+            <a className="nav-item nav-link" href="#">Vendors</a>
+            <a className="nav-item nav-link" href="#">Reorder</a>
+            <a className="nav-item nav-link" href="#"
+            onClick={()=>{this.createClick();}} 
+            >Add Item</a>
+          </div>
+        </nav>
 
-            <CreateItem
-              createItem={this.createItem}
-              onInputChange={this.onInputChange}
-              Item={this.state.Item}
-              Name={this.state.Name}
-              Description={this.state.Description}
-              Price={this.state.Price}
-              Img={this.state.Img}
-              Cat={this.state.Cat}
-              Qty={this.state.Qty}
-              Reord_Qty={this.state.Reord_Qty}
-            />
+            {screenSwitch}
+            {screenSwitch1}
 
-            <InventoryDetail
-              updateItem={this.updateItem}
-              onInputChange={this.onInputChange}
-              Item={this.state.Item}
-              Name={this.state.Name}
-              Description={this.state.Description}
-              Price={this.state.Price}
-              Img={this.state.Img}
-              Cat={this.state.Cat}
-              Qty={this.state.Qty}
-              Reord_Qty={this.state.Reord_Qty}
-              items={this.state.items}
-              deleteItem={this.deleteItem}
-             />
 
             {/* <Footer /> */}
         </div>
