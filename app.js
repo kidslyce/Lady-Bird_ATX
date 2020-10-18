@@ -113,11 +113,11 @@ createItem = (event) => {
     render = () => {
         return <div className="Inventory-container">
 
-         <Nav />
+         
        
 
 
-
+            <Nav />
             <CreateItem 
               createItem={this.createItem}
               onInputChange={this.onInputChange}
@@ -142,7 +142,7 @@ createItem = (event) => {
               Cat={this.state.Cat}
               Qty={this.state.Qty}
               Reord_Qty={this.state.Reord_Qty}
-             /> */}
+             />          */}
             
             <Footer />
         </div>
