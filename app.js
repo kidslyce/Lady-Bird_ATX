@@ -17,12 +17,13 @@ class App extends React.Component {
     Cat: '',
     Qty: '',
     Reord_Qty: '',
-    items: [] 
+    items: []
 }
 
-componentDidMount = () => {
-    this.getdata();
-}
+// componentDidMount = () => {
+
+//     this.getdata();
+// }
 
 // componentWillMount = (prevState) => {
 //     this.getdata();
@@ -57,7 +58,7 @@ createItem = (event) => {
       )
     .then((response) => {
         console.log(response.data, 'create item response');
-        
+
     })
     .then(() => {
         this.getdata();
@@ -108,17 +109,20 @@ createItem = (event) => {
       )
   }
 
+onClickHandler = () => {
+    this.getdata();
+}
+
 
 
     render = () => {
         return <div className="Inventory-container">
 
-         
-       
+            <Nav
+            onClickHandler={this.onClickHandler}
+            />
 
-
-            <Nav />
-            <CreateItem 
+            <CreateItem
               createItem={this.createItem}
               onInputChange={this.onInputChange}
               Item={this.state.Item}
@@ -131,7 +135,7 @@ createItem = (event) => {
               Reord_Qty={this.state.Reord_Qty}
             />
 
-            {/* <InventoryDetail 
+            <InventoryDetail
               updateItem={this.updateItem}
               onInputChange={this.onInputChange}
               Item={this.state.Item}
@@ -142,11 +146,13 @@ createItem = (event) => {
               Cat={this.state.Cat}
               Qty={this.state.Qty}
               Reord_Qty={this.state.Reord_Qty}
-             />          */}
-            
-            <Footer />
+              items={this.state.items}
+              deleteItem={this.deleteItem}
+             />
+
+            {/* <Footer /> */}
         </div>
-        
+
     }
 }
 
