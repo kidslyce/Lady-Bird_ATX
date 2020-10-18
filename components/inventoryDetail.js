@@ -5,7 +5,7 @@ class InventoryDetail extends React.Component{
         <h2>Inventory Detail</h2>
             <ul>
                 {
-                    this.state.items.map(
+                    this.items.map(
                         (items) => {
                             return <li>
                                 {props.items.img}:
