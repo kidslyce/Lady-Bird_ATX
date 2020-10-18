@@ -161,7 +161,7 @@ onClickHandler = () => {
             {screenSwitch1}
 
 
-            {/* <Footer /> */}
+            <Footer />
         </div>
 
     }

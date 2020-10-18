@@ -4,7 +4,7 @@ class InventoryDetail extends React.Component{
 
     render = () => {
         return <div>
-        <h2>Inventory Detail</h2>
+
             <ul>
                 {
                     this.props.items.map((item) => {
