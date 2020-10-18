@@ -3,7 +3,6 @@
 //====================================================
 
 const Nav = (props) => {
-  console.log('look here');
     return <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
       <div className="navbar-nav">
         <a className="nav-item nav-link active" href="#">Lady Bird Atx </a>
@@ -19,6 +18,3 @@ const Nav = (props) => {
 
 
   }
-
-
-

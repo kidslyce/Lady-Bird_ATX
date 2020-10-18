@@ -32,6 +32,8 @@ if($_REQUEST['action'] === 'index'){
 }else if ($_REQUEST['action'] === 'getone'){
     $all_items = Inventory::getone($_REQUEST['id']);
     echo json_encode($all_items);
+}else if ($_REQUEST['action'] === 'getreo'){
+      echo json_encode(Inventory::getreo() );
 }
 
 ?>

@@ -6,6 +6,9 @@ RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteRule ^lbatx$ controllers/lbatx.php?action=index
 
 RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteRule ^lbatx2$ controllers/lbatx.php?action=getreo
+
+RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteRule ^lbatx1/([0-9]+)$ controllers/lbatx.php?action=getone&id=$1
 
 RewriteCond %{REQUEST_METHOD} ^POST$
