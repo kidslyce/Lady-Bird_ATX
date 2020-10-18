@@ -1,134 +1,3 @@
-
-//====================================================
-// NavBar
-//====================================================
-
-const Nav = () => {
-  return <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-    <div className="navbar-nav">
-      <a className="nav-item nav-link active" href="#">Lady Bird Atx </a>
-      <a className="nav-item nav-link active" href="#">Inventory </a>
-      
-      <a className="nav-item nav-link" href="#">Vendors</a>
-      <a className="nav-item nav-link" href="#">Reorder</a>
-      
-<button type="button" className="btn btn-primary" data-toggle="modal" data-target="#modalCart">Create Item</button>
-
-
-<div className="modal fade" id="modalCart" tabIndex="" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div className="modal-dialog" role="document">
-    <div className="modal-content">
-   
-      <div className="modal-header">
-        <h4 className="modal-title" id="myModalLabel">Your cart</h4>
-        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-   
-      <div className="modal-body">
-
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Product name</th>
-              <th>Price</th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Product 1</td>
-              <td>100$</td>
-              <td><a><i className="fas fa-times"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Product 2</td>
-              <td>100$</td>
-              <td><a><i className="fas fa-times"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Product 3</td>
-              <td>100$</td>
-              <td><a><i className="fas fa-times"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>Product 4</td>
-              <td>100$</td>
-              <td><a><i className="fas fa-times"></i></a></td>
-            </tr>
-            <tr className="total">
-              <th scope="row">5</th>
-              <td>Total</td>
-              <td>400$</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-
-      </div>
-      
-      <div className="modal-footer">
-        <button type="button" className="btn btn-outline-primary" data-dismiss="modal">Close</button>
-        <button className="btn btn-primary">Checkout</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-    </div>
-  
-</nav>
-
-
-}
-
-
-//====================================================
-// Footer
-//====================================================
-const Footer = () => {
-
-return <footer className="fixed-bottom page-footer font-small unique-color-dark pt-4">
-
-
-<div className="container">
-
- 
-  <ul className="list-unstyled list-inline text-center py-2">
-    <li className="list-inline-item">
-      <h5 className="mb-1">Register for free</h5>
-    </li>
-    <li className="list-inline-item">
-      <a href="#!" className="btn btn-outline-white btn-rounded">Sign up!</a>
-    </li>
-  </ul>
- 
-
-</div>
-
-
-
-<div className="footer-copyright text-center py-3">© 2020 Copyright:
-  <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-</div>
-
-
-</footer>
-    
-}
-
-
-
-
-
-
 class App extends React.Component {
   state = {
 
@@ -140,16 +9,20 @@ class App extends React.Component {
     Cat: '',
     Qty: '',
     Reord_Qty: '',
-    items: [] 
+    items: [],
+    screenToShow: ''
 }
 
-componentDidMount = () => {
-    this.getdata();
+inventoryClick = () => {
+    this.setState({
+        screenToShow: 'Inventory'
+    })
 }
-
-// componentWillMount = (prevState) => {
-//     this.getdata();
-// }
+createClick = () => {
+    this.setState({
+        screenToShow: 'Create'
+    })
+}
 
 getdata = () => {
     axios.get('/lbatx').then(
@@ -180,7 +53,7 @@ createItem = (event) => {
       )
     .then((response) => {
         console.log(response.data, 'create item response');
-        
+
     })
     .then(() => {
         this.getdata();
@@ -231,42 +104,66 @@ createItem = (event) => {
       )
   }
 
-
-
+onClickHandler = () => {
+    this.getdata();
+}
     render = () => {
+      let screenSwitch = (this.state.screenToShow === 'Create')
+        ?(<CreateItem
+          createItem={this.createItem}
+          onInputChange={this.onInputChange}
+          Item={this.state.Item}
+          Name={this.state.Name}
+          Description={this.state.Description}
+          Price={this.state.Price}
+          Img={this.state.Img}
+          Cat={this.state.Cat}
+          Qty={this.state.Qty}
+          Reord_Qty={this.state.Reord_Qty}
+        />)
+        : null;
+
+        let screenSwitch1 = (this.state.screenToShow === 'Inventory')
+        ?(<InventoryDetail
+          updateItem={this.updateItem}
+          onInputChange={this.onInputChange}
+          Item={this.state.Item}
+          Name={this.state.Name}
+          Description={this.state.Description}
+          Price={this.state.Price}
+          Img={this.state.Img}
+          Cat={this.state.Cat}
+          Qty={this.state.Qty}
+          Reord_Qty={this.state.Reord_Qty}
+          items={this.state.items}
+          deleteItem={this.deleteItem}
+          />)
+          : null;
+
+
+
         return <div className="Inventory-container">
 
-         <Nav />
+        <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+          <div className="navbar-nav">
+            <a className="nav-item nav-link active" href="#">Lady Bird Atx </a>
+            <a className="nav-item nav-link active" href="#"
+            onClick={()=>{this.getdata() ; this.inventoryClick();}}>Inventory</a>
+            <a className="nav-item nav-link" href="#">Vendors</a>
+            <a className="nav-item nav-link" href="#">Reorder</a>
+            <a className="nav-item nav-link" href="#"
+            onClick={()=>{this.createClick();}} 
+            >Add Item</a>
+          </div>
+        </nav>
 
-            <CreateItem 
-              createItem={this.createItem}
-              onInputChange={this.onInputChange}
-              Item={this.state.Item}
-              Name={this.state.Name}
-              Description={this.state.Description}
-              Price={this.state.Price}
-              Img={this.state.Img}
-              Cat={this.state.Cat}
-              Qty={this.state.Qty}
-              Reord_Qty={this.state.Reord_Qty}
-            />
+            {screenSwitch}
+            {screenSwitch1}
 
-            {/* <InventoryDetail 
-              updateItem={this.updateItem}
-              onInputChange={this.onInputChange}
-              Item={this.state.Item}
-              Name={this.state.Name}
-              Description={this.state.Description}
-              Price={this.state.Price}
-              Img={this.state.Img}
-              Cat={this.state.Cat}
-              Qty={this.state.Qty}
-              Reord_Qty={this.state.Reord_Qty}
-             /> */}
-            
+
             <Footer />
         </div>
-        
+
     }
 }
 

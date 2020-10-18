@@ -4,3 +4,7 @@
 .Inventory-container{
     background-color: #9c9a9a;
 }
+
+.modal{
+    z-index: 1;
+}
