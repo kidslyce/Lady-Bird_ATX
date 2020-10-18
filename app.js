@@ -150,7 +150,7 @@ onClickHandler = () => {
               deleteItem={this.deleteItem}
              />
 
-            {/* <Footer /> */}
+            <Footer />
         </div>
 
     }
