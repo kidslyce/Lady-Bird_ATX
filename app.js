@@ -1,23 +1,61 @@
 
 class App extends React.Component {
   state = {
-    items: []
+
+    newItemItem: '',
+    newItemName: '',
+    newItemDescription: '',
+    newItemPrice: '',
+    newItemImg: '',
+    newItemCat: '',
+    newItemQty: '',
+    newItemReord_Qty: '',
+    items: [] 
 }
 
 componentDidMount = () => {
     this.getdata();
 }
 
+// componentWillMount = (prevState) => {
+//     this.getdata();
+// }
 
 getdata = () => {
     axios.get('/lbatx').then(
         (response) => {
+            console.log(response.data, 'get data response');
             this.setState({
                 items: response.data
             }
         )
     })
 }
+
+createItem = (event) => {
+    event.preventDefault();
+    console.log(this.state.items);
+    axios.post(
+      '/lbatx',
+      {
+        item:this.state.newItemItem,
+        name:this.state.newItemName,
+        description:this.state.newItemDescription,
+        price: this.state.newItemPrice,
+        img:this.state.newItemImg,
+        cat: this.state.newItemCat,
+        qty:this.state.newItemQty,
+        reord_qty: this.state.newItemReord_Qty,
+      }
+      )
+    .then((response) => {
+        console.log(response.data, 'create item response');
+        
+    })
+    .then(() => {
+        this.getdata();
+    })
+  }
 ///////////////  UPDATE ITEM   /////////////
   changeUpdateItemItem = (event) => {
       this.setState({
@@ -69,6 +107,14 @@ getdata = () => {
     })
   }
 
+  ///////////////  NEW ITEM   /////////////
+  onInputChange = (event) => {
+    this.setState({
+        [event.target.name]:event.target.value
+    })
+}
+
+
   updateItem = (event) => {
       event.preventDefault();
       const id = event.target.getAttribute('id');
@@ -104,36 +150,24 @@ getdata = () => {
       )
   }
 
-  createItem = (event) => {
-      event.preventDefault();
-      axios.post(
-        '/lbatx',
-        {
-          item:this.state.newItemItem,
-          name:this.state.newItemName,
-          description:this.state.newItemDescription,
-          price: this.state.newItemPrice,
-          img:this.state.newItemImg,
-          cat: this.state.newItemCat,
-          qty:this.state.newItemQty,
-          reord_qty: this.state.newItemReord_Qty,
-        }
-).then(
-    (response) => {
-        this.setState({
-            items: response.data
-        })
-    }
-)
-}
 
 
     render = () => {
         return <div>
 
          
-            <CreateItem createdItem={this.updateItem}
-                getdata={this.getdata.bind(this)}
+            <CreateItem 
+              createItem={this.createItem}
+              onInputChange={this.onInputChange}
+              newItemItem={this.state.newItemItem}
+              newItemName={this.state.newItemName}
+              newItemDescription={this.state.newItemDescription}
+              newItemPrice={this.state.newItemPrice}
+              newItemImg={this.state.newItemImg}
+              newItemCat={this.state.newItemCat}
+              newItemQty={this.state.newItemQty}
+              newItemReord_Qty={this.state.newItemReord_Qty}
+             
             />
 
 
@@ -153,15 +187,15 @@ getdata = () => {
                                 <details>
                                 <summary>Click to Update</summary>
                                   <form id={items.id} onSubmit={this.updateItem}>
-                                    <input onKeyUp={this.changeUpdateItemItem} type="text" placeholder="item"/><br/>
-                                    <input onKeyUp={this.changeUpdateItemName} type="text" placeholder="name"/><br/>
-                                    <input onKeyUp={this.changeUpdateItemDescription} type="text" placeholder="description"/><br/>
-                                    <input onKeyUp={this.changeUpdateItemPrice} type="number" placeholder="price"/><br/>
-                                    <input onKeyUp={this.changeUpdateItemImg} type="text" placeholder="img"/><br/>
-                                    <input onKeyUp={this.changeUpdateItemCat} type="text" placeholder="cat"/><br/>
-                                    <input onKeyUp={this.changeUpdateItemQty} type="number" placeholder="qty"/><br/>
-                                    <input onKeyUp={this.changeUpdateItemReord_Qty} type="number" placeholder="reord_qty"/><br/>
-                                    <input type="submit" value="Update Item"/>
+                                  <input onChange={this.onInputChange} name="newItemItem" value={this.state.newItemItem}type="text" placeholder="item"/><br/>
+                <input onChange={this.onInputChange} name="newItemName" value={this.state.newItemName} type="text" placeholder="name"/><br/>
+                <input onChange={this.onInputChange} name="newItemDescripton" value={this.state.newItemDescription}type="text" placeholder="description"/><br/>
+                <input onChange={this.onInputChange} name="newItemPrice" value={this.state.newItemPrice}type="number" placeholder="price"/><br/>
+                <input onChange={this.onInputChange} name="newItemImg" value={this.state.newItemImg}type="text" placeholder="img"/><br/>
+                <input onChange={this.onInputChange} name="newItemCat" value={this.state.newItemCat}type="text" placeholder="cat"/><br/>
+                <input onChange={this.onInputChange} name="newItemQty" type="number" value={this.state.newItemQty} placeholder="qty"/><br/>
+                <input onChange={this.onInputChange} name="newItemReord_Qty" value={this.state.newItemReord_Qty} type="number" placeholder="reord_qty"/><br/>
+                <input type="submit" value="Update Item"/>
                                 </form>
                                 </details>
                             </li>
