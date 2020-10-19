@@ -10,12 +10,18 @@ class App extends React.Component {
     Qty: '',
     Reord_Qty: '',
     items: [],
-    screenToShow: ''
+    screenToShow: '',
+    reorder: []
 }
 
 inventoryClick = () => {
     this.setState({
         screenToShow: 'Inventory'
+    })
+}
+reorderClick = () => {
+    this.setState({
+        screenToShow: 'Reorder'
     })
 }
 createClick = () => {
@@ -29,9 +35,23 @@ getdata = () => {
         (response) => {
             console.log(response.data, 'get data response');
             this.setState({
-                items: response.data
+                items: response.data,
+                screenToShow: 'Inventory'
             }
         )
+    })
+}
+
+getReorder = () => {
+    axios.get('/lbatx2').then(
+      (response) => {
+            console.log(response.data, 'get data response from reorder');
+            this.setState({
+              reorder: response.data,
+              screenToShow: 'Reorder'
+            }
+          )
+            console.log(this.state.reorder, 'get state response from reorder');
     })
 }
 
@@ -108,39 +128,55 @@ onClickHandler = () => {
     this.getdata();
 }
     render = () => {
-      let screenSwitch = (this.state.screenToShow === 'Create')
-        ?(<CreateItem
-          createItem={this.createItem}
-          onInputChange={this.onInputChange}
-          Item={this.state.Item}
-          Name={this.state.Name}
-          Description={this.state.Description}
-          Price={this.state.Price}
-          Img={this.state.Img}
-          Cat={this.state.Cat}
-          Qty={this.state.Qty}
-          Reord_Qty={this.state.Reord_Qty}
-        />)
-        : null;
-
-        let screenSwitch1 = (this.state.screenToShow === 'Inventory')
-        ?(<InventoryDetail
-          updateItem={this.updateItem}
-          onInputChange={this.onInputChange}
-          Item={this.state.Item}
-          Name={this.state.Name}
-          Description={this.state.Description}
-          Price={this.state.Price}
-          Img={this.state.Img}
-          Cat={this.state.Cat}
-          Qty={this.state.Qty}
-          Reord_Qty={this.state.Reord_Qty}
-          items={this.state.items}
-          deleteItem={this.deleteItem}
-          />)
-          : null;
-
-
+      let screen = null;
+      switch(this.state.screenToShow){
+        case 'Create':
+          screen = <CreateItem
+            createItem={this.createItem}
+            onInputChange={this.onInputChange}
+            Item={this.state.Item}
+            Name={this.state.Name}
+            Description={this.state.Description}
+            Price={this.state.Price}
+            Img={this.state.Img}
+            Cat={this.state.Cat}
+            Qty={this.state.Qty}
+            Reord_Qty={this.state.Reord_Qty}
+          />
+          break;
+        case 'Inventory':
+          screen = <InventoryDetail
+            updateItem={this.updateItem}
+            onInputChange={this.onInputChange}
+            Item={this.state.Item}
+            Name={this.state.Name}
+            Description={this.state.Description}
+            Price={this.state.Price}
+            Img={this.state.Img}
+            Cat={this.state.Cat}
+            Qty={this.state.Qty}
+            Reord_Qty={this.state.Reord_Qty}
+            items={this.state.items}
+            deleteItem={this.deleteItem}
+          />
+          break;
+        case 'Reorder':
+          console.log('we are in reorder')
+          screen =<div className ='reorder'>
+            <ul>
+              {this.state.reorder.map((items) =>{
+                return(
+                  <div key={items.id}>
+                    <li>{items.item} {items.name}</li>
+                  </div>
+                )
+              })}
+            </ul>
+          </div>
+          console.log(screen)
+          break;
+        default:
+      }
 
         return <div className="Inventory-container">
 
@@ -148,17 +184,20 @@ onClickHandler = () => {
           <div className="navbar-nav">
             <a className="nav-item nav-link active" href="#">Lady Bird Atx </a>
             <a className="nav-item nav-link active" href="#"
-            onClick={()=>{this.getdata() ; this.inventoryClick();}}>Inventory</a>
+            onClick={()=>{this.getdata();}}>Inventory</a>
             <a className="nav-item nav-link" href="#">Vendors</a>
-            <a className="nav-item nav-link" href="#">Reorder</a>
+
             <a className="nav-item nav-link" href="#"
-            onClick={()=>{this.createClick();}} 
+               onClick={()=>{this.getReorder();}}>Reorder</a>
+
+            <a className="nav-item nav-link" href="#"
+            onClick={()=>{this.createClick();}}
             >Add Item</a>
           </div>
         </nav>
 
-            {screenSwitch}
-            {screenSwitch1}
+            {screen}
+
 
 
             <Footer />
