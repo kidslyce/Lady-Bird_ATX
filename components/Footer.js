@@ -3,7 +3,7 @@
 //====================================================
 const Footer = () => {
 
-    return <footer className="fixed-bottom position-aboslute page-footer font-small unique-color-dark pt-4">
+    return <footer className="fixed-bottom position-aboslute page-footer font-small unique-color-dark pt-1">
 
 
     <div className="container">
@@ -11,20 +11,9 @@ const Footer = () => {
 
       <ul className="list-unstyled list-inline text-center py-2">
         <li className="list-inline-item">
-          <h5 className="mb-1">Register for free</h5>
-        </li>
-        <li className="list-inline-item">
-          <a href="#!" className="btn btn-outline-white btn-rounded">Sign up!</a>
+          <h5 className="mb-1">Lady Bird Atx</h5>
         </li>
       </ul>
-
-
-    </div>
-
-
-
-    <div className="footer-copyright text-center py-3">© 2020 Copyright:
-      <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
     </div>
 
 

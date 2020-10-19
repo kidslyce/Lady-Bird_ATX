@@ -160,22 +160,50 @@ onClickHandler = () => {
             deleteItem={this.deleteItem}
           />
           break;
-        case 'Reorder':
-          console.log('we are in reorder')
-          screen =<div className ='reorder'>
-            <ul>
-              {this.state.reorder.map((items) =>{
-                return(
-                  <div key={items.id}>
-                    <li>{items.item} {items.name}</li>
-                  </div>
-                )
-              })}
-            </ul>
-          </div>
-          console.log(screen)
-          break;
-        default:
+          case 'Reorder':
+            console.log('we are in reorder')
+            screen =<div className ='reorder'>
+              
+              <ul>
+                {this.state.reorder.map((items) =>{
+                  return(
+                    <div key={items.id}>
+                    <table class="table">
+                    <div class="card-body">
+    <thead>
+      <tr>
+       
+        <th class="table-head sku">SKU</th>
+        <th class="table-head Item">Item</th>
+        <th class="table-head cat">cat</th>
+        <th class="table-head qty">qty</th>
+        <th class="table-head reord_qty">Reorder Qty</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{items.item}</td>
+        <td>{items.name}</td>
+        <td>{items.cat}</td>
+        <td>{items.qty}</td>
+        <td>{items.reord_qty}</td>
+          
+      </tr>
+      
+    </tbody>
+    </div>
+  </table>
+  
+                      
+                    </div>
+                  )
+                })}
+              </ul>
+            </div>
+            console.log(screen)
+            break;
+          default:
+        
       }
 
         return <div className="Inventory-container">
