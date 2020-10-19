@@ -98,7 +98,25 @@ button:hover{
       background-color: bisque;
       border-radius: 10px;
       box-shadow: 5px 5px #13547a;
+      rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+      transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+      padding: 14px 80px 18px 36px;
+      cursor: pointer;
       /* max-width: 800px; */
+}
+.card-body:hover{
+     transform: scale(1.05);
+     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px  #13547a;
+}
+
+
+.card-body-title{
+    background-color: bisque;
+    border-radius: 10px;
+    box-shadow: 3px 3px #13547a;
+    width: 200px;
+    position: relative;
+
 }
 
 .table-head{
@@ -121,7 +139,24 @@ table {
 h2{
     color: bisque;
 }
+h2{
+    color: #13547a;
+    display: flex;
+    justify-content: center;
+
+}
 
 tr{
+    color: #13547a;
+}
+
+.btn-secondary{
+    color:bisque;
+    background-color: #13547a;
+    border-color: ;
+
+}
+.btn-secondary:hover{
+    background-color: #cafff9;
     color: #13547a;
 }

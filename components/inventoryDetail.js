@@ -1,5 +1,3 @@
-
-
 class InventoryDetail extends React.Component{
 
     render = () => {
@@ -9,13 +7,36 @@ class InventoryDetail extends React.Component{
                 {
                     this.props.items.map((item) => {
                         return (
-                            <li key={item.id}>
-                                
-                                {item.img}:
-                                {item.item}: {item.name} :{item.description}
-                                {item.price} : {item.cat}
-                                {item.qty} : {item.reord_qty}
-                                
+            <div key={item.id}>
+                <table class="table">
+                    <div class="card-body">
+                        <thead>
+                        <tr>
+                        
+                            <th class="table-head sku">SKU</th>
+                            <th class="table-head Item">Item</th>
+                            <th class="table-head cat">cat</th>
+                            <th class="table-head qty">qty</th>
+                            <th class="table-head reord_qty">Reorder Qty</th>
+                            <th class="table-head cat">cat</th>
+                            <th class="table-head qty">qty</th>
+                            <th class="table-head reord_qty">Reorder Qty</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                             <tr>   
+                               <td>{item.img}</td> 
+                               <td>{item.item}</td>
+                                <td>{item.name}</td>
+                                <td>{item.description}</td>
+                                <td>{item.price}</td>
+                                <td>{item.cat}</td>
+                                <td>{item.qty}</td>
+                                <td>{item.reord_qty}</td>
+                            </tr>
+                        </tbody>
+                    </div>
+                </table>
                                 <details>
                                 <summary>Click to Update</summary>
                                     <form id={item.id} onSubmit={this.props.updateItem}>
@@ -33,7 +54,7 @@ class InventoryDetail extends React.Component{
                                 <button value={item.id} onClick={this.props.deleteItem} class="btn btn-danger">
                                     DELETE
                                 </button>
-                            </li>
+                            </div>
                         )
                     })
                 }
