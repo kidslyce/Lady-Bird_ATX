@@ -2,7 +2,7 @@ class CreateItem extends React.Component {
 
 
     render = () => {
-      return <div>
+      return <div className="CreateItem">
       <h2>Create Item</h2>
               <form onSubmit={this.props.createItem}>
                 <input onChange={this.props.onInputChange} name="Item" value={this.props.Item} type="text"  placeholder="item"/><br/>

@@ -1,10 +1,65 @@
-.fixed-bottom {
-    background-color: #7acaff;
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+body{
+    background-color:  #cafff9;
 }
-.Inventory-container{
-    background-color: #9c9a9a;
+.fixed-bottom {
+    background-image: linear-gradient(15deg, #13547a 0%, #91ebe0 100%);
+    
+}
+.nav-item1{
+    font-family: 'Lobster', cursive;
+    
+}
+.nav-item{
+    color: azure;
+    margin-right: 2px;
+}
+span{
+    color: azure;
+    
+} 
+h5{
+    color: azure;
+    font-family: 'Lobster', cursive;
+    
 }
 
-.modal{
-    z-index: 1;
+
+.bg-custom-2 {
+    background-image: linear-gradient(15deg, #13547a 0%, #91f0e5 100%);
+    }
+
+
+.reorder {
+  padding-top: 120px;
 }
+.InventoryDetail{
+    margin-top: 80px;
+    overflow: auto;
+    max-height: 100vh;
+}
+
+.CreateItem{
+    margin-top: 80px;
+    margin-left: 20px;
+    overflow: auto;
+    max-height: 100vh;
+}
+
+.nav-item:hover{
+    text-decoration: underline;
+    text-decoration-color: azure;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+button:hover{
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    
+  }
+
+  
+

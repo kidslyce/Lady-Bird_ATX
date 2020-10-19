@@ -3,26 +3,24 @@
 class InventoryDetail extends React.Component{
 
     render = () => {
-        return <div>
+        return <div className="InventoryDetail">
 
             <ul>
                 {
                     this.props.items.map((item) => {
                         return (
-                            <li>
+                            <li key={item.id}>
                                 {item.img}:
                                 {item.item}: {item.name} :{item.description}
                                 {item.price} : {item.cat}
-                                {item.qty} : {item.reord_qty}
-                                <button value={item.id} onClick={this.props.deleteItem}>
-                                    DELETE
-                                </button>
+                                {item.qty} : {item.reord_qty}<br></br>
+                                
                                 <details>
                                 <summary>Click to Update</summary>
                                     <form id={item.id} onSubmit={this.props.updateItem}>
                                     <input onChange={this.props.onInputChange}  name="Item" value={this.props.Item} type="text" placeholder="item"/><br/>
                                     <input onChange={this.props.onInputChange} name="Name" value={this.props.Name} type="text" placeholder="name"/><br/>
-                                    <input onChange={this.props.onInputChange} name="Descripton" value={this.props.Description}type="text" placeholder="description"/><br/>
+                                    <input onChange={this.props.onInputChange} name="Description" value={this.props.Description} type="text" placeholder="description"/><br/>
                                     <input onChange={this.props.onInputChange} name="Price" value={this.props.Price}type="number" placeholder="price"/><br/>
                                     <input onChange={this.props.onInputChange} name="Img" value={this.props.Img}type="text" placeholder="img"/><br/>
                                     <input onChange={this.props.onInputChange} name="Cat" value={this.props.Cat}type="text" placeholder="cat"/><br/>
@@ -31,6 +29,9 @@ class InventoryDetail extends React.Component{
                                     <input type="submit" value="Update Item"/>
                                 </form>
                                 </details>
+                                <button value={item.id} onClick={this.props.deleteItem} class="btn btn-danger">
+                                    DELETE
+                                </button>
                             </li>
                         )
                     })
@@ -40,5 +41,3 @@ class InventoryDetail extends React.Component{
     }
 
 }
-
-
