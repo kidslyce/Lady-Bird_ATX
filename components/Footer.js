@@ -3,7 +3,7 @@
 //====================================================
 const Footer = () => {
 
-    return <footer className="fixed-bottom page-footer font-small unique-color-dark pt-4">
+    return <footer className="fixed-bottom position-aboslute page-footer font-small unique-color-dark pt-4">
 
 
     <div className="container">

@@ -180,19 +180,19 @@ onClickHandler = () => {
 
         return <div className="Inventory-container">
 
-        <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar fixed-top bg-custom-2 navbar-expand-lg navbar-light bg-light">
           <div className="navbar-nav">
-            <a className="nav-item nav-link active" href="#">Lady Bird Atx </a>
+            <a className="nav-item nav-link active" href="#"><h5>Lady Bird Atx</h5> </a>
             <a className="nav-item nav-link active" href="#"
-            onClick={()=>{this.getdata();}}>Inventory</a>
-            <a className="nav-item nav-link" href="#">Vendors</a>
+            onClick={()=>{this.getdata();}}><span>Inventory</span></a>
+            <a className="nav-item nav-link"  href="#"><span>Vendors</span></a>
 
             <a className="nav-item nav-link" href="#"
-               onClick={()=>{this.getReorder();}}>Reorder</a>
+               onClick={()=>{this.getReorder();}}><span>Reorder</span></a>
 
             <a className="nav-item nav-link" href="#"
             onClick={()=>{this.createClick();}}
-            >Add Item</a>
+            ><span>Add Item</span></a>
           </div>
         </nav>
 
