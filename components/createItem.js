@@ -4,6 +4,7 @@ class CreateItem extends React.Component {
     render = () => {
       return <div className="CreateItem">
               <div class="card-body">
+              <h5 class="card-title">Card title</h5>
                 <form onSubmit={this.props.createItem}>
                   <input onChange={this.props.onInputChange} name="Item" value={this.props.Item} type="text"  placeholder="item"/><br/>
                   <input onChange={this.props.onInputChange} name="Name" value={this.props.Name} type="text" placeholder="name"/><br/>
