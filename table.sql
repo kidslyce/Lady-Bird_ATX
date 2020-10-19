@@ -18,6 +18,7 @@ INSERT INTO inventory (item, name,description,price,cat,img,qty,reord_qty) VALUE
 INSERT INTO inventory (item, name,description,price,cat,img,qty,reord_qty) VALUES
 ('113-00990','italian auburn','color 10oz', 9.93,'color','2543',1,12);
 
+
 INSERT INTO inventory (item, name,description,price,cat,img,qty,reord_qty) VALUES
 ('jant-3320','styling paste','shampoo 32oz', 9.93,'cleanser','2543',14,20);
 
