@@ -112,7 +112,7 @@ static function createInv($new_item){
 	}
 	static function getreo() {
     $items = array();
-    $results = pg_query("select * from inventory where reord_qty > qty");
+    $results = pg_query("select a.id, a.item, a.name, a.description, a.price, b.vendor_name, a.img, a.qty, a.reord_qty from inventory a, vendors b where a.qty < a.reord_qty and b.vendor_id = a.img");
     $row_object = pg_fetch_object($results);
    while($row_object !== false){
       $new_item = new Item(
@@ -121,7 +121,7 @@ static function createInv($new_item){
         $row_object->name,
         $row_object->description,
         $row_object->price,
-        $row_object->cat,
+        $row_object->vendor_name,
         $row_object->img,
         $row_object->qty,
         $row_object->reord_qty
