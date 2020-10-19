@@ -10,10 +10,11 @@ class InventoryDetail extends React.Component{
                     this.props.items.map((item) => {
                         return (
                             <li key={item.id}>
+                                
                                 {item.img}:
                                 {item.item}: {item.name} :{item.description}
                                 {item.price} : {item.cat}
-                                {item.qty} : {item.reord_qty}<br></br>
+                                {item.qty} : {item.reord_qty}
                                 
                                 <details>
                                 <summary>Click to Update</summary>

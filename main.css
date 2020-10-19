@@ -1,11 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
+
+
 body{
     background-color:  #cafff9;
+    min-height: 400px;
+    margin-bottom: 100px;
+    clear: both;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
 }
 .fixed-bottom {
-    background-image: linear-gradient(15deg, #13547a 0%, #91ebe0 100%);
-    
+    background-image: linear-gradient(15deg, #13547a 0%, #91ebe0 100%);  
 }
+
+
 .nav-item1{
     font-family: 'Lobster', cursive;
     
@@ -19,7 +35,7 @@ span{
     
 } 
 h5{
-    color: azure;
+    color: bisque;
     font-family: 'Lobster', cursive;
     
 }
@@ -27,39 +43,85 @@ h5{
 
 .bg-custom-2 {
     background-image: linear-gradient(15deg, #13547a 0%, #91f0e5 100%);
-    }
+}
 
 
 .reorder {
   padding-top: 120px;
 }
+
 .InventoryDetail{
-    margin-top: 80px;
+   
     overflow: auto;
     max-height: 100vh;
 }
 
 .CreateItem{
-    margin-top: 80px;
-    margin-left: 20px;
-    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     max-height: 100vh;
+    
+
 }
+
+input {
+    margin-bottom: 5vh;
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    background-color:transparent;
+    outline: none;
+    color: rgb(138, 138, 138);
+    caret-color: w rgb(138, 138, 138);
+}
+
 
 .nav-item:hover{
     text-decoration: underline;
-    text-decoration-color: azure;
+    text-decoration-color: bisque;
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
-  }
+}
 
 button:hover{
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
     
+}
+
+
+.card-body {
+      background-color: bisque;
+      border-radius: 10px;
+      box-shadow: 5px 5px #13547a;
+      /* max-width: 800px; */
+}
+
+.table-head{
+    width: 200px;
+}
+table {
+    /* table-layout: fixed; */
+    /* border-collapse: collapse; */
+    /* border-spacing: 0.5rem; */
+    /* white-space: nowrap; */
   }
+  /* header{
+    min-height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+} */
 
-  
+h2{
+    color: bisque;
+}
 
+tr{
+    color: #13547a;
+}
