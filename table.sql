@@ -26,7 +26,7 @@ INSERT INTO inventory (item, name,description,price,cat,img,qty,reord_qty) VALUE
 ('bb883829','Bumble & Bumble shampoo','shampoo 32oz', 19.93,'cleanser','xyzzy',12,15);
 
 INSERT INTO inventory (item, name,description,price,cat,img,qty,reord_qty) VALUES
-('113-00990','italian auburn','color 10oz', 9.93,'color','xyzzy',12,12);
+('113-00990','italian auburn','color 10oz', 9.93,'color','xyzzy',1,12);
 
 INSERT INTO inventory (item, name,description,price,cat,img,qty,reord_qty) VALUES
 ('jant-3320','styling paste','shampoo 32oz', 9.93,'cleanser','xyzzy',38,20);
