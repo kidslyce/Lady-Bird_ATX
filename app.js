@@ -152,7 +152,7 @@ onClickHandler = () => {
             <a className="nav-item nav-link" href="#">Vendors</a>
             <a className="nav-item nav-link" href="#">Reorder</a>
             <a className="nav-item nav-link" href="#"
-            onClick={()=>{this.createClick();}} 
+            onClick={()=>{this.createClick();}}
             >Add Item</a>
           </div>
         </nav>
