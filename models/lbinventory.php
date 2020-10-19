@@ -41,6 +41,29 @@ class Item {
     }
 }
 
+class ItemReo {
+    public $id;
+    public $item;
+    public $name;
+    public $description;
+    public $price;
+    public $vendor_name;
+    public $img;
+    public $qty;
+    public $reord_qty;
+    public function __construct($id,$item,$name,$description,$price,$vendor_name,$img,$qty,$reord_qty) {
+      $this->id = $id;
+      $this->item = $item;
+      $this->name = $name;
+      $this->description = $description;
+      $this->price = $price;
+      $this->vendor_id = $vendor_name;
+      $this->img = $img;
+      $this->qty = $qty;
+      $this->reord_qty = $reord_qty;
+    }
+}
+
 class Inventory {
    static function updateInv($updated_item){
      $query = "UPDATE inventory SET item = $1, name = $2 , description = $3, price = $4,
@@ -112,16 +135,16 @@ static function createInv($new_item){
 	}
 	static function getreo() {
     $items = array();
-    $results = pg_query("select * from inventory where reord_qty > qty");
+    $results = pg_query("select a.id, a.item, a.name, a.description, a.price, b.vendor_name, a.img, a.qty, a.reord_qty from inventory a, vendors b where a.qty < a.reord_qty and b.vendor_id = a.img");
     $row_object = pg_fetch_object($results);
    while($row_object !== false){
-      $new_item = new Item(
+      $new_item = new ItemReo(
         intval($row_object->id),
         $row_object->item,
         $row_object->name,
         $row_object->description,
         $row_object->price,
-        $row_object->cat,
+        $row_object->vendor_name,
         $row_object->img,
         $row_object->qty,
         $row_object->reord_qty
