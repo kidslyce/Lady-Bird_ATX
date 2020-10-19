@@ -9,7 +9,7 @@ class InventoryDetail extends React.Component{
                 {
                     this.props.items.map((item) => {
                         return (
-                            <li>
+                            <li key={item.id}>
                                 {item.img}:
                                 {item.item}: {item.name} :{item.description}
                                 {item.price} : {item.cat}
@@ -40,5 +40,3 @@ class InventoryDetail extends React.Component{
     }
 
 }
-
-
