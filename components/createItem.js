@@ -4,7 +4,7 @@ class CreateItem extends React.Component {
     render = () => {
       return <div className="CreateItem">
               <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              
                 <form onSubmit={this.props.createItem}>
                   <input onChange={this.props.onInputChange} name="Item" value={this.props.Item} type="text"  placeholder="item"/><br/>
                   <input onChange={this.props.onInputChange} name="Name" value={this.props.Name} type="text" placeholder="name"/><br/>
@@ -14,7 +14,7 @@ class CreateItem extends React.Component {
                   <input onChange={this.props.onInputChange} name="Cat" value={this.props.Cat} type="text" placeholder="cat"/><br/>
                   <input onChange={this.props.onInputChange} name="Qty" type="number" value={this.props.Qty} placeholder="qty"/><br/>
                   <input onChange={this.props.onInputChange} name="Reord_Qty" value={this.props.Reord_Qty} type="number" placeholder="reord_qty"/><br/>
-                  <input type="submit" class="btn btn-secondary" value="Create Item"/>
+                  <input type="submit" class="btn btn-secondary" value="Add Item"/>
                 </form>
               </div>
             </div>
