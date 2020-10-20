@@ -72,8 +72,16 @@ createItem = (event) => {
       }
       )
     .then((response) => {
-        console.log(response.data, 'create item response');
-
+      this.setState({
+          Item:'',
+          Name:'',
+          Description:'',
+          Price:'',
+          Img:'',
+          Cat:'',
+          Qty:'',
+          Reord_Qty:'',
+      })
     })
     .then(() => {
         this.getdata();
@@ -107,10 +115,20 @@ createItem = (event) => {
       )
       .then((response) => {
           this.setState({
-              items: response.data
+              items: response.data,
+              Item:'',
+              Name:'',
+              Description:'',
+              Price:'',
+              Img:'',
+              Cat:'',
+              Qty:'',
+              Reord_Qty:'',
           })
-      })
+      }
+    )
   }
+
 
   deleteItem = (event) => {
       axios.delete('/lbatx/' + event.target.value).then(
@@ -169,6 +187,7 @@ onClickHandler = () => {
               <ul>
                 {this.state.reorder.map((items) =>{
                   return(
+
         <div key={items.id}>
                     <table class="table">
                       <div class="card-body">
@@ -195,6 +214,7 @@ onClickHandler = () => {
   
                       
         </div>
+
                   )
                 })}
               </ul>
@@ -202,10 +222,11 @@ onClickHandler = () => {
             console.log(screen)
             break;
           default:
-        
+
       }
 
         return <div className="Inventory-container">
+
 
                     <nav className="navbar fixed-top bg-custom-2 navbar-expand-lg navbar-light bg-light">
                       <div className="navbar-nav">
@@ -224,6 +245,7 @@ onClickHandler = () => {
 
                     <Footer />
                 </div>
+
 
     }
 }

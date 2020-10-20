@@ -30,6 +30,7 @@ class InventoryDetail extends React.Component{
                     <div class="card-body">
                         <thead>
                         <tr>
+
                         
                             <th class="table-head sku">Vendor</th>
                             <th class="table-head Item">Sku</th>
@@ -42,8 +43,8 @@ class InventoryDetail extends React.Component{
                         </tr>
                         </thead>
                         <tbody>
-                             <tr>   
-                               <td>{item.img}</td> 
+                             <tr>
+                               <td>{item.img}</td>
                                <td>{item.item}</td>
                                 <td>{item.name}</td>
                                 <td>{item.description}</td>
@@ -58,8 +59,7 @@ class InventoryDetail extends React.Component{
                         </tbody>
                     </div>
                 </table>
-                                
-                                
+
                             </div>
                         )
                     })
