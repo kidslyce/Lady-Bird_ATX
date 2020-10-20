@@ -72,8 +72,16 @@ createItem = (event) => {
       }
       )
     .then((response) => {
-        console.log(response.data, 'create item response');
-
+      this.setState({
+          Item:'',
+          Name:'',
+          Description:'',
+          Price:'',
+          Img:'',
+          Cat:'',
+          Qty:'',
+          Reord_Qty:'',
+      })
     })
     .then(() => {
         this.getdata();
@@ -107,10 +115,20 @@ createItem = (event) => {
       )
       .then((response) => {
           this.setState({
-              items: response.data
+              items: response.data,
+              Item:'',
+              Name:'',
+              Description:'',
+              Price:'',
+              Img:'',
+              Cat:'',
+              Qty:'',
+              Reord_Qty:'',
           })
-      })
+      }
+    )
   }
+
 
   deleteItem = (event) => {
       axios.delete('/lbatx/' + event.target.value).then(
@@ -163,39 +181,40 @@ onClickHandler = () => {
           case 'Reorder':
             console.log('we are in reorder')
             screen =<div className ='reorder'>
-              
+               <div class="card-body-title">
+                 <h2>Reorder Form</h2>
+               </div>
               <ul>
                 {this.state.reorder.map((items) =>{
                   return(
-                    <div key={items.id}>
+
+        <div key={items.id}>
                     <table class="table">
-                    <div class="card-body">
-    <thead>
-      <tr>
-       
-        <th class="table-head sku">SKU</th>
-        <th class="table-head Item">Item</th>
-        <th class="table-head cat">cat</th>
-        <th class="table-head qty">qty</th>
-        <th class="table-head reord_qty">Reorder Qty</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{items.item}</td>
-        <td>{items.name}</td>
-        <td>{items.cat}</td>
-        <td>{items.qty}</td>
-        <td>{items.reord_qty}</td>
-          
-      </tr>
-      
-    </tbody>
-    </div>
-  </table>
-  
-                      
-                    </div>
+                      <div class="card-body">
+                          <thead>
+                              <tr>
+                                <th class="table-head sku">SKU</th>
+                                <th class="table-head Item">Name</th>
+                                <th class="table-head cat">Vendor</th>
+                                <th class="table-head qty">qty</th>
+                                <th class="table-head reord_qty">Reorder Qty</th>
+                              </tr>
+                          </thead>
+                              <tbody>
+                                <tr>
+                                  <td>{items.item}</td>
+                                  <td>{items.name}</td>
+                                  <td>{items.cat}</td>
+                                  <td>{items.qty}</td>
+                                  <td>{items.reord_qty}</td>
+                                </tr>
+                              </tbody>
+                        </div>
+                    </table>
+
+
+        </div>
+
                   )
                 })}
               </ul>
@@ -203,33 +222,30 @@ onClickHandler = () => {
             console.log(screen)
             break;
           default:
-        
+
       }
 
         return <div className="Inventory-container">
 
-        <nav className="navbar fixed-top bg-custom-2 navbar-expand-lg navbar-light bg-light">
-          <div className="navbar-nav">
-            <a className="nav-item nav-link active" href="#"><h5>Lady Bird Atx</h5> </a>
-            <a className="nav-item nav-link active" href="#"
-            onClick={()=>{this.getdata();}}><span>Inventory</span></a>
-            <a className="nav-item nav-link"  href="#"><span>Vendors</span></a>
 
-            <a className="nav-item nav-link" href="#"
-               onClick={()=>{this.getReorder();}}><span>Reorder</span></a>
+                    <nav className="navbar fixed-top bg-custom-2 navbar-expand-lg navbar-light bg-light">
+                      <div className="navbar-nav">
+                        <a className="nav-item nav-link active" href="#" onClick={()=>{location.reload();}}><h5>Lady Bird Atx</h5> </a>
+                        <a className="nav-item nav-link active" href="#"
+                        onClick={()=>{this.getdata();}}><span>Inventory</span></a>
+                        <a className="nav-item nav-link"  href="#"><span>Vendors</span></a>
+                        <a className="nav-item nav-link" href="#"
+                        onClick={()=>{this.getReorder();}}><span>Reorder</span></a>
+                        <a className="nav-item nav-link" href="#"
+                        onClick={()=>{this.createClick();}}><span>Add Item</span></a>
+                      </div>
+                    </nav>
 
-            <a className="nav-item nav-link" href="#"
-            onClick={()=>{this.createClick();}}
-            ><span>Add Item</span></a>
-          </div>
-        </nav>
+                      {screen}
 
-            {screen}
+                    <Footer />
+                </div>
 
-
-
-            <Footer />
-        </div>
 
     }
 }
