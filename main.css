@@ -20,7 +20,9 @@ body{
 .fixed-bottom {
     background-image: linear-gradient(15deg, #13547a 0%, #91ebe0 100%);  
 }
-
+.navbar{
+    margin-bottom: 100px; 
+}
 
 .nav-item1{
     font-family: 'Lobster', cursive;
@@ -50,10 +52,14 @@ h5{
   padding-top: 120px;
 }
 
+.Inventory-container{
+    /* margin-top: 500px; */
+}
+
 .InventoryDetail{
    
-    overflow: auto;
-    max-height: 100vh;
+   margin-top: 400px;
+   margin-bottom: 150px;
 }
 
 .CreateItem{
@@ -86,10 +92,16 @@ input {
     transform: scale(1.1);
 }
 
-button:hover{
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
+.card-body1{
+    background-color: bisque;
+    border-radius: 10px;
+    box-shadow: 5px 5px #13547a;
+    rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    padding: 14px 80px 18px 36px;
+    cursor: pointer; 
+    width: fit-content;
+    margin-bottom: 20px;
     
 }
 
@@ -100,7 +112,7 @@ button:hover{
       box-shadow: 5px 5px #13547a;
       rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
       transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-      padding: 14px 80px 18px 36px;
+      padding: 14px 40px 18px 10px;
       cursor: pointer;
       /* max-width: 800px; */
 }
@@ -116,7 +128,11 @@ button:hover{
     box-shadow: 3px 3px #13547a;
     width: 200px;
     position: relative;
+    margin-left: 20px;
 
+}
+summary::-webkit-details-marker{
+    color: #13547a;
 }
 
 .table-head{
@@ -150,13 +166,43 @@ tr{
     color: #13547a;
 }
 
+.btn-danger{
+    margin-left: 10px;
+    color:bisque;
+    background-color: #13547a;
+    border-color: #cafff9;
+}
+
+.btn-danger:hover{
+    background-color: #cafff9;
+    color: #13547a;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    border-color:  #13547a;
+}
+
 .btn-secondary{
     color:bisque;
     background-color: #13547a;
-    border-color: ;
+    border-color: #cafff9;
 
 }
 .btn-secondary:hover{
     background-color: #cafff9;
     color: #13547a;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+::placeholder{
+    color: #13547a;
+    text-decoration-color:#13547a;
+
+}
+
+summary{
+    color: #13547a;
+
 }
