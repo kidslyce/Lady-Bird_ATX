@@ -211,8 +211,8 @@ onClickHandler = () => {
                               </tbody>
                         </div>
                     </table>
-  
-                      
+
+
         </div>
 
                   )
@@ -230,7 +230,7 @@ onClickHandler = () => {
 
                     <nav className="navbar fixed-top bg-custom-2 navbar-expand-lg navbar-light bg-light">
                       <div className="navbar-nav">
-                        <a className="nav-item nav-link active" href="#"><h5>Lady Bird Atx</h5> </a>
+                        <a className="nav-item nav-link active" href="#" onClick={()=>{location.reload();}}><h5>Lady Bird Atx</h5> </a>
                         <a className="nav-item nav-link active" href="#"
                         onClick={()=>{this.getdata();}}><span>Inventory</span></a>
                         <a className="nav-item nav-link"  href="#"><span>Vendors</span></a>
