@@ -169,38 +169,32 @@ onClickHandler = () => {
               <ul>
                 {this.state.reorder.map((items) =>{
                   return(
-                    <div key={items.id}>
-                      
-                        
-                     
+        <div key={items.id}>
                     <table class="table">
-                    <div class="card-body">
-    <thead>
-      <tr>
-       
-        <th class="table-head sku">SKU</th>
-        <th class="table-head Item">Item</th>
-        <th class="table-head cat">cat</th>
-        <th class="table-head qty">qty</th>
-        <th class="table-head reord_qty">Reorder Qty</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{items.item}</td>
-        <td>{items.name}</td>
-        <td>{items.cat}</td>
-        <td>{items.qty}</td>
-        <td>{items.reord_qty}</td>
-          
-      </tr>
-      
-    </tbody>
-    </div>
-  </table>
+                      <div class="card-body">
+                          <thead>
+                              <tr>
+                                <th class="table-head sku">SKU</th>
+                                <th class="table-head Item">Name</th>
+                                <th class="table-head cat">Vendor</th>
+                                <th class="table-head qty">qty</th>
+                                <th class="table-head reord_qty">Reorder Qty</th>
+                              </tr>
+                          </thead>
+                              <tbody>
+                                <tr>
+                                  <td>{items.item}</td>
+                                  <td>{items.name}</td>
+                                  <td>{items.cat}</td>
+                                  <td>{items.qty}</td>
+                                  <td>{items.reord_qty}</td>
+                                </tr>
+                              </tbody>
+                        </div>
+                    </table>
   
                       
-                    </div>
+        </div>
                   )
                 })}
               </ul>
@@ -213,28 +207,23 @@ onClickHandler = () => {
 
         return <div className="Inventory-container">
 
-        <nav className="navbar fixed-top bg-custom-2 navbar-expand-lg navbar-light bg-light">
-          <div className="navbar-nav">
-            <a className="nav-item nav-link active" href="#"><h5>Lady Bird Atx</h5> </a>
-            <a className="nav-item nav-link active" href="#"
-            onClick={()=>{this.getdata();}}><span>Inventory</span></a>
-            <a className="nav-item nav-link"  href="#"><span>Vendors</span></a>
+                    <nav className="navbar fixed-top bg-custom-2 navbar-expand-lg navbar-light bg-light">
+                      <div className="navbar-nav">
+                        <a className="nav-item nav-link active" href="#"><h5>Lady Bird Atx</h5> </a>
+                        <a className="nav-item nav-link active" href="#"
+                        onClick={()=>{this.getdata();}}><span>Inventory</span></a>
+                        <a className="nav-item nav-link"  href="#"><span>Vendors</span></a>
+                        <a className="nav-item nav-link" href="#"
+                        onClick={()=>{this.getReorder();}}><span>Reorder</span></a>
+                        <a className="nav-item nav-link" href="#"
+                        onClick={()=>{this.createClick();}}><span>Add Item</span></a>
+                      </div>
+                    </nav>
 
-            <a className="nav-item nav-link" href="#"
-               onClick={()=>{this.getReorder();}}><span>Reorder</span></a>
+                      {screen}
 
-            <a className="nav-item nav-link" href="#"
-            onClick={()=>{this.createClick();}}
-            ><span>Add Item</span></a>
-          </div>
-        </nav>
-
-            {screen}
-
-
-
-            <Footer />
-        </div>
+                    <Footer />
+                </div>
 
     }
 }
